@@ -9,6 +9,7 @@ public class Main {
         filme.setAnoDeLancamento(2022);
         filme.setDuracaoEmMinutos(180);
 
+
         filme.exibirFichaTecnica();
         filme.avaliar(8);
         filme.avaliar(5);
@@ -24,9 +25,11 @@ public class Main {
         serie.setAnoDeLancamento(2008);
         serie.setTemporadas(8);
         serie.setEpisodiosPorTemporada(10);
+        serie.setMinutosPorEpisodio(50);
 
         serie.exibirFichaTecnica();
         System.out.println(serie.getTemporadas());
         System.out.println(serie.getEpisodiosPorTemporada());
+        System.out.println("Duração em minutos para maratonar Breaking Bad: " + serie.getDuracaoEmMinutos());
     }
 }
