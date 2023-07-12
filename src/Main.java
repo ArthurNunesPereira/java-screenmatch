@@ -1,3 +1,4 @@
+import br.com.alura.screenmatch.calculos.CalculadoraDeTempo;
 import br.com.alura.screenmatch.modelos.Filme;
 import br.com.alura.screenmatch.modelos.Serie;
 
@@ -31,5 +32,18 @@ public class Main {
         System.out.println(serie.getTemporadas());
         System.out.println(serie.getEpisodiosPorTemporada());
         System.out.println("Duração em minutos para maratonar Breaking Bad: " + serie.getDuracaoEmMinutos());
+
+        Filme filme2 = new Filme();
+
+        filme2.setNome("Titanic");
+        filme2.setAnoDeLancamento(2009);
+        filme2.setDuracaoEmMinutos(160);
+
+        CalculadoraDeTempo calculadora = new CalculadoraDeTempo();
+
+        calculadora.incluirTitulo(filme);
+        calculadora.incluirTitulo(filme2);
+        calculadora.incluirTitulo(serie);
+        System.out.println(calculadora.getTempoTotal());
     }
 }
