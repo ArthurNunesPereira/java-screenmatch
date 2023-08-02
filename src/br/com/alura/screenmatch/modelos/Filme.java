@@ -15,6 +15,6 @@ public class Filme extends Titulo implements Classificacao {
 
     @Override
     public int getClassificacao() {
-        return 0;
+        return (int) retornarMedia() / 2;
     }
 }
