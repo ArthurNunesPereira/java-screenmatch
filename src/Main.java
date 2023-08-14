@@ -4,6 +4,8 @@ import br.com.alura.screenmatch.modelos.Episodio;
 import br.com.alura.screenmatch.modelos.Filme;
 import br.com.alura.screenmatch.modelos.Serie;
 
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
         Filme filme = new Filme();
@@ -57,5 +59,19 @@ public class Main {
         episodio.setTotalVisualizacoes(300);
 
         filtro.filtra(episodio);
+
+        Filme filme3 = new Filme();
+        filme3.setDuracaoEmMinutos(90);
+        filme3.setNome("Jojo Rabbit");
+        filme3.setAnoDeLancamento(2019);
+        filme3.avaliar(10);
+
+        ArrayList<Filme> listaDeFilmes = new ArrayList<>();
+        listaDeFilmes.add(filme3);
+        listaDeFilmes.add(filme);
+        listaDeFilmes.add(filme2);
+        System.out.println("Tamanho da lista de filmes: " + listaDeFilmes.size());
+        System.out.println("Primeiro Filme da lista: " + listaDeFilmes.get(0).getNome());
+        System.out.println(listaDeFilmes);
     }
 }
