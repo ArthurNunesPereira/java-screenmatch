@@ -1,3 +1,5 @@
+package br.com.alura.screenmatch.principal;
+
 import br.com.alura.screenmatch.calculos.CalculadoraDeTempo;
 import br.com.alura.screenmatch.calculos.FiltroRecomendacao;
 import br.com.alura.screenmatch.modelos.Episodio;
@@ -8,10 +10,7 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        Filme filme = new Filme();
-
-        filme.setNome("Top Gun Maverick");
-        filme.setAnoDeLancamento(2022);
+        Filme filme = new Filme("Top Gun Maverick", 2022);
         filme.setDuracaoEmMinutos(180);
 
 
@@ -24,10 +23,7 @@ public class Main {
 
         System.out.println(filme.retornarMedia());
 
-        Serie serie = new Serie();
-
-        serie.setNome("Breaking Bad");
-        serie.setAnoDeLancamento(2008);
+        Serie serie = new Serie("Breaking Bad", 2008);
         serie.setTemporadas(8);
         serie.setEpisodiosPorTemporada(10);
         serie.setMinutosPorEpisodio(50);
@@ -37,10 +33,7 @@ public class Main {
         System.out.println(serie.getEpisodiosPorTemporada());
         System.out.println("Duração em minutos para maratonar Breaking Bad: " + serie.getDuracaoEmMinutos());
 
-        Filme filme2 = new Filme();
-
-        filme2.setNome("Titanic");
-        filme2.setAnoDeLancamento(2009);
+        Filme filme2 = new Filme("Titanic", 2009);
         filme2.setDuracaoEmMinutos(160);
 
         CalculadoraDeTempo calculadora = new CalculadoraDeTempo();
@@ -60,10 +53,8 @@ public class Main {
 
         filtro.filtra(episodio);
 
-        Filme filme3 = new Filme();
+        Filme filme3 = new Filme("Jojo Rabbit", 2019);
         filme3.setDuracaoEmMinutos(90);
-        filme3.setNome("Jojo Rabbit");
-        filme3.setAnoDeLancamento(2019);
         filme3.avaliar(10);
 
         ArrayList<Filme> listaDeFilmes = new ArrayList<>();
