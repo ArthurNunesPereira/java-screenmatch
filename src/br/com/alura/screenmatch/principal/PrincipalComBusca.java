@@ -20,25 +20,34 @@ public class PrincipalComBusca {
         var filme = scan.nextLine();
 
         String endereco = "https://www.omdbapi.com/?t=" + filme + "&apikey=cebf13f2";
+        try {
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(endereco))
+                    .build();
 
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(endereco))
-                .build();
+            HttpResponse<String> response = client
+                    .send(request, HttpResponse.BodyHandlers.ofString());
+            String json = response.body();
+            System.out.println(json);
 
-        HttpResponse<String> response = client
-                .send(request, HttpResponse.BodyHandlers.ofString());
-        String json = response.body();
-        System.out.println(json);
+            Gson gson = new GsonBuilder()
+                    .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
+                    .create();
+            TituloOmdb meuTituloOmdb = gson.fromJson(json, TituloOmdb.class);
+            System.out.println(meuTituloOmdb);
 
-        Gson gson = new GsonBuilder()
-                .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
-                .create();
-        TituloOmdb meuTituloOmdb = gson.fromJson(json, TituloOmdb.class);
-        System.out.println(meuTituloOmdb);
 
-        Titulo meuTitulo = new Titulo(meuTituloOmdb);
-        System.out.println("Titulo ja convertido");
-        System.out.println(meuTitulo);
+            Titulo meuTitulo = new Titulo(meuTituloOmdb);
+            System.out.println("Titulo ja convertido");
+            System.out.println(meuTitulo);
+        } catch (NumberFormatException e) {
+            System.out.println("Aconteceu um erro!");
+            System.out.println(e.getMessage());
+        } catch (IllegalArgumentException e) {
+            System.out.println("Algum erro de argumento na busca, verifique o endereço.");
+        }
+
+        System.out.println("O programa finalizou corretamente!");
     }
 }
